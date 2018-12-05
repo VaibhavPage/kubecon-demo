@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Gateway
+metadata:
+  name: s3-gateway
+  labels:
+    gateways.argoproj.io/gateway-controller-instanceid: argo-events
+    gateway-name: s3-gateway
+spec:
+  deploySpec:
+    containers:
+    - name: artifact-events
+      image: "argoproj/artifact-gateway:v0.6"
+      imagePullPolicy: Always
+      command: ["/bin/artifact-gateway"]
+    serviceAccountName: argo-events-sa
+  configMap: s3-gateway-configmap
+  eventVersion: "1.0"
+  imageVersion: "v0.6"
+  type: artifact
+  dispatchMechanism: HTTP
+  watchers:
+    sensors:
+    - name: s3-input-sensor
+    - name: s3-output-sensor
