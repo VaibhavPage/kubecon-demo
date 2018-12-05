@@ -2,7 +2,7 @@
 alias k="kubectl --namespace=argo-events"
 ```
 
-## 1. Print event payload
+## 1. 
 
 - Create an event source
     ```bash
@@ -108,7 +108,7 @@ alias k="kubectl --namespace=argo-events"
 
     - Post requests
     
-## 2. Something more complex
+## 2.
  - Input image
  
     ![](kubelogo-wide.png)
