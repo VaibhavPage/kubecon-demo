@@ -25,93 +25,19 @@ alias k="kubectl --namespace=argo-events"
  ---
   
  - Update event sources
-    ```yaml
-    apiVersion: v1
-    kind: ConfigMap
-    metadata:
-      name: webhook-gateway-configmap
-    data:
-      hello: |-
-        port: "12000"
-        endpoint: "/hello"
-        method: "POST"
-      echo: |-
-        endpoint: "/echo"
-        method: "POST"
+    ```bash
+    https://raw.githubusercontent.com/VaibhavPage/kubecon-demo/master/demo1/gateway/webhook-gateway-configmap-updated.yaml
     ```
 
  - Update triggers in sensor
-    ```yaml
-    apiVersion: argoproj.io/v1alpha1
-    kind: Sensor
-    metadata:
-      name: webhook-sensor
-      labels:
-        sensors.argoproj.io/sensor-controller-instanceid: argo-events
-    spec:
-      repeat: true
-      imageVersion: "v0.6"
-      serviceAccountName: argo-events-sa
-      signals:
-        - name: webhook-gateway/hello
-        - name: webhook-gateway/echo
-      triggers:
-        - name: webhook-hello-trigger
-          resource:
-            namespace: argo-events
-            group: argoproj.io
-            version: v1alpha1
-            kind: Workflow
-            parameters:
-              - src:
-                  signal: webhook-gateway/hello
-                dest: spec.templates.0.container.args.0
-            source:
-              inline: |
-                apiVersion: argoproj.io/v1alpha1
-                kind: Workflow
-                metadata:
-                  generateName: hello-payload-
-                spec:
-                  entrypoint: whalesay
-                  templates:
-                    - name: whalesay
-                      container:
-                        args:
-                          - "hello world"
-                        command:
-                          - cowsay
-                        image: "docker/whalesay:latest"
-        - name: webhook-echo-trigger
-          resource:
-            namespace: argo-events
-            group: argoproj.io
-            version: v1alpha1
-            kind: Workflow
-            parameters:
-              - src:
-                  signal: webhook-gateway/echo
-                dest: spec.templates.0.container.args.0
-            source:
-              inline: |
-                apiVersion: argoproj.io/v1alpha1
-                kind: Workflow
-                metadata:
-                  generateName: echo-payload-
-                spec:
-                  entrypoint: whalesay
-                  templates:
-                    - name: whalesay
-                      container:
-                        args:
-                          - "hello world"
-                        command:
-                          - cowsay
-                        image: "docker/whalesay:latest"
-
+    ```bash
+    https://raw.githubusercontent.com/VaibhavPage/kubecon-demo/master/demo1/sensor/webhook-sensor-updated.yaml
     ```
 
 ## 2.
+
+ ![](S3-demo.png)
+
  - Input image
  
     ![](kubelogo-wide.png)
