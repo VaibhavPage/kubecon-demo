@@ -2,6 +2,22 @@
 alias k="kubectl --namespace=argo-events"
 ```
 
+```bash
+curl https://dl.minio.io/client/mc/release/linux-amd64/mc -o mc
+```
+
+```bash
+chmod +x mc
+```
+
+```bash
+./mc config host add minio http://35.232.72.252:9000 myaccess mysecret
+```
+
+```bash
+./mc cp kubelogo.png minio/input
+```
+
 ## 0. Let's install Argo-Events
 ```bash
 sh install.sh
