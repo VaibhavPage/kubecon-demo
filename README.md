@@ -27,6 +27,17 @@ sh install.sh
     ```bash
     k apply -f https://raw.githubusercontent.com/VaibhavPage/kubecon-demo/master/demo1/sensor/webhook-sensor.yaml
     ```
+    
+ - Post request
+ ```bash
+  curl -X POST --data '{"msg": "Hello KubeCon!!!"}' http://35.226.73.251:12000/hello
+ ```   
+ 
+ - Delete workflow
+  ```bash
+  k delete wf --all
+  ```   
+
  ---
   
  - Update event sources
@@ -43,6 +54,27 @@ sh install.sh
     ```bash
     k apply -f https://raw.githubusercontent.com/VaibhavPage/kubecon-demo/master/demo1/sensor/webhook-sensor-updated.yaml
     ```
+    
+ - Post request to `/hello`
+ ```bash
+ curl -X POST --data '{"msg": "Hello KubeCon!!!"}' http://35.226.73.251:12000/hello
+ ```
+ 
+ - Post request to `/echo`
+ ```bash
+ curl -X POST --data '{"msg": "echo KubeCon!!!"}' http://35.226.73.251:12000/echo
+ ```
+ 
+ - Clear gateways, sensors and workflows
+ ```bash
+ k delete gateways --all
+ ```
+ ```bash
+ k delete sensors --all
+ ```
+ ```bash
+ k delete wf --all
+ ```
 
 ## 2.
 
@@ -80,3 +112,4 @@ sh install.sh
  ```bash
  k apply -f https://raw.githubusercontent.com/VaibhavPage/kubecon-demo/master/demo2/sensor/s3-output-sensor.yaml
  ```
+
