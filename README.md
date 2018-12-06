@@ -131,14 +131,4 @@ sh install.sh
 
 ### Uninstall Argo-Events
 
-```bash
-k delete deployments sensor-controller gateway-controller
-```
-
-```bash
-k delete configmap sensor-controller-configmap gateway-controller-configmap
-```
-
-```bash
-k delete crd gateways.argoproj.io sensors.argoproj.io
-```
+sh uninstall.sh
