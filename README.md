@@ -113,3 +113,16 @@ sh install.sh
  k apply -f https://raw.githubusercontent.com/VaibhavPage/kubecon-demo/master/demo2/sensor/s3-output-sensor.yaml
  ```
 
+### Uninstall Argo-Events
+
+```bash
+k delete deployments sensor-controller gateway-controller
+```
+
+```bash
+k delete configmap sensor-controller-configmap gateway-controller-configmap
+```
+
+```bash
+k delete crd gateways.argoproj.io sensors.argoproj.io
+```
