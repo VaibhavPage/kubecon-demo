@@ -31,12 +31,12 @@ sh install.sh
 
 - Create an event source
     ```bash
-    k create -f https://raw.githubusercontent.com/VaibhavPage/kubecon-demo/master/demo1/gateway/webhook-gateway.yaml
+    k apply -f https://raw.githubusercontent.com/VaibhavPage/kubecon-demo/master/demo1/gateway/webhook-gateway-configmap.yaml
     ```
  
 - Create gateway
     ```bash
-    k apply -f https://raw.githubusercontent.com/VaibhavPage/kubecon-demo/master/demo1/gateway/webhook-gateway-configmap.yaml
+    k create -f https://raw.githubusercontent.com/VaibhavPage/kubecon-demo/master/demo1/gateway/webhook-gateway.yaml
     ```
 
 - Create sensor
