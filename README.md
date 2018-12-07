@@ -128,6 +128,10 @@ sh install.sh
  ```bash
  k apply -f https://raw.githubusercontent.com/VaibhavPage/kubecon-demo/master/demo2/sensor/s3-output-sensor.yaml
  ```
+ 
+ ```bash
+ ./mc cp kubelogo.png minio/input
+ ```
 
 ### Uninstall Argo-Events
 
